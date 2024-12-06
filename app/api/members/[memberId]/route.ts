@@ -2,12 +2,14 @@ import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+
 export async function DELETE(
     req: Request,
     { params }: { params: {memberId: string }}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         const { searchParams } = new URL(req.url);
 
         const serverId = searchParams.get("serverId");
@@ -63,8 +65,9 @@ export async function PATCH(
     req: Request,
     { params }: { params: { memberId: string }}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         const { searchParams } = new URL(req.url);
         const { role } = await req.json();
 

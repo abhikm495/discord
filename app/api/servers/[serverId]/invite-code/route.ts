@@ -4,12 +4,14 @@ import { NextResponse } from "next/server";
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 
+
 export async function PATCH(
     req: Request,
     { params }: { params: { serverId: string}}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
 
         if (!profile) {
             return new NextResponse("Unauthorized", {status: 401 });            

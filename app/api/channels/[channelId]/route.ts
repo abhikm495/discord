@@ -8,8 +8,9 @@ export async function PATCH(
     req: Request,
     { params }: { params: {channelId: string}}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         const { name, type } = await req.json();
         const { searchParams } = new URL(req.url);
         
@@ -75,8 +76,9 @@ export async function DELETE(
     req: Request,
     { params }: { params: {channelId: string}}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
 
         const { searchParams } = new URL(req.url);
         const serverId = searchParams.get("serverId");

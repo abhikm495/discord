@@ -7,9 +7,10 @@ export async function DELETE(
     req: Request,
     { params }: { params: { serverId: string}}
 ) {
+    const profile = await currentProfile();
     try {
 
-        const profile = await currentProfile();
+        
 
         if (!profile) {
             return new NextResponse("Unauthorized", { status: 401 });
@@ -34,9 +35,10 @@ export async function PATCH(
     req: Request,
     { params }: { params: { serverId: string}}
 ) {
+    const profile = await currentProfile();
     try {
 
-        const profile = await currentProfile();
+        
         const { name, imageUrl } = await req.json();
 
         if (!profile) {

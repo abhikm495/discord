@@ -9,8 +9,9 @@ const MESSAGES_BATCH = 10;
 export async function GET(
     req: Request
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         const { searchParams } = new URL(req.url);
 
         const cursor = searchParams.get("cursor");

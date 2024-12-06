@@ -1,16 +1,15 @@
 import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { DirectMessage } from "@prisma/client";
-import { MessageSquarePlusIcon } from "lucide-react";
 import { NextResponse } from "next/server";
 
 const MESSAGES_BATCH = 10;
-
 export async function GET(
     req: Request
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         const { searchParams } = new URL(req.url);
 
         const cursor = searchParams.get("cursor");

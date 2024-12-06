@@ -6,8 +6,9 @@ export async function PATCH(
     req: Request,
     { params }: { params: { serverId: string}}
 ) {
+    const profile = await currentProfile();
     try {
-        const profile = await currentProfile();
+        
         // const { name, imageUrl } = await req.json();
 
         if (!profile) {
